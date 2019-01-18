@@ -5,9 +5,9 @@ class App extends Component {
   render() {
     return (
         <React.Fragment>
-          <div gridArea="rightMenu" background="brand" />
+          <div className="rightMenu" />
           <MainTemplate />
-          <div gridArea="leftMenu" background="brand" />
+          <div className="leftMenu" />
         </React.Fragment>
     );
   }
