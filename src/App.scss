@@ -1,13 +1,27 @@
-$buttonColor: #1098ad;
+$margin-each-other: 5%;
+$side-width: 10%;
+$main-width: 70%;
+
+body {
+  margin: 0;
+}
+
+.layout {
+  position: relative;
+  display: inline-block;
+}
 
 .rightMenu {
-  
+  width: $side-width;
 }
 
 .mainTemplate {
-
+  width: $main-width;
+  margin-left: $margin-each-other;
+  margin-right: $margin-each-other;
+  text-align: center;
 }
 
 .leftMenu {
-
+  width: $side-width;
 }

@@ -14,7 +14,7 @@ class MainTemplate extends Component {
     const {input} = this.state;
     const {handleCreate, handleKeyPress, handleChange} = this;
     return (
-      <React.Fragment>
+      <div className="layout mainTemplate">
         <div>
           <UserForm
             value={input}
@@ -26,7 +26,7 @@ class MainTemplate extends Component {
         <div>
           <UserList users={this.state.users}></UserList>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 

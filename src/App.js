@@ -6,9 +6,9 @@ class App extends Component {
   render() {
     return (
         <React.Fragment>
-          <div className="rightMenu"/>
-          <MainTemplate className="mainTemplate"/>
-          <div className="leftMenu"/>
+          <div className="layout leftMenu">LEFT</div>
+          <MainTemplate />
+          <div className="layout rightMenu">RIGHT</div>
         </React.Fragment>
     );
   }
