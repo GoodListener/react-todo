@@ -18,11 +18,12 @@ class User extends Component {
         checked={checked}
         />
     )
-    const {handleChange, handleCreate, handleKeyPress} = this;
+    const {handleChange, handleCreate, handleKeyPress, handleRemove} = this;
 
     return (
       <div>
         {this.props.name}
+        <button onClick={handleRemove}>delete</button>
         <TodoForm
           value={input}
           onChange={handleChange}
@@ -45,6 +46,10 @@ class User extends Component {
         checked: false
       })
     });
+  }
+
+  handleRemove = () => {
+    this.props.handleRemove(this.props.id);
   }
 
   handleKeyPress = (e) => {

@@ -17,6 +17,7 @@ class App extends Component {
           />
           <MainTemplate
             users={this.state.users}
+            handleRemove={this.handleRemove}
           />
           <div className="layout rightMenu">RIGHT</div>
         </React.Fragment>
@@ -31,6 +32,13 @@ class App extends Component {
         name: input,
         checked: false
       })
+    })
+  }
+
+  handleRemove = (id) => {
+    const { users } = this.state;
+    this.setState({
+      users: users.filter(user => user.id !== id)
     })
   }
 }

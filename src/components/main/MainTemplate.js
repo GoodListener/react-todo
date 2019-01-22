@@ -6,7 +6,10 @@ class MainTemplate extends Component {
     return (
       <div className="layout mainTemplate">
         <div>
-          <UserList users={this.props.users}></UserList>
+          <UserList
+            users={this.props.users}
+            handleRemove={this.props.handleRemove}
+          ></UserList>
         </div>
       </div>
     );

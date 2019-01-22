@@ -3,13 +3,15 @@ import User from './User'
 
 class UserList extends Component {
   render() {
-    const {users} = this.props;
+    const { users } = this.props;
+    const { handleRemove } = this.props;
     const userList = users.map(
       ({id, name}) =>
         <User
           key={id}
           id={id}
           name={name}
+          handleRemove={handleRemove}
         />
 
     )
@@ -20,6 +22,7 @@ class UserList extends Component {
       </div>
     );
   }
+
 }
 
 export default UserList;
