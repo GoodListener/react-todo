@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
 import User from './User'
+import { UserConsumer } from '../../context/User'
 
 class UserList extends Component {
   render() {
-    const { users } = this.props;
-    const { handleRemove } = this.props;
-    const userList = users.map(
-      ({id, name}) =>
-        <User
-          key={id}
-          id={id}
-          name={name}
-          handleRemove={handleRemove}
-        />
-
-    )
+    const userList = (
+    <UserConsumer>
+      {
+        (test) => (
+          test.state.users.map(
+            user => (
+              <User
+                key={user.key}
+                name={user.name}
+              />)
+          )
+        )
+      }
+    </UserConsumer>
+  );
 
     return (
       <div>
         {userList}
       </div>
-    );
+    )
   }
 
 }

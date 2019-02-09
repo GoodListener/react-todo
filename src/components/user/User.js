@@ -1,37 +1,35 @@
 import React, { Component } from 'react';
-import Todo from '../todo/Todo'
 import TodoForm from '../todo/TodoForm'
+import TodoList from '../todo/TodoList'
 
 class User extends Component {
+  no = 1
+
   state = {
     input : '',
     todos : []
   }
 
   render() {
-    const {input, todos} = this.state;
-    const todoList = todos.map(
-      ({name, checked, id}) =>
-      <Todo
-        key={id}
-        name={name}
-        checked={checked}
-        />
-    )
-    const {handleChange, handleCreate, handleKeyPress, handleRemove} = this;
+    const {input} = this.state;
+    const { handleRemove } = this;
+    const {handleChange, handleCreate, handleKeyPress} = this;
 
     return (
-      <div>
+      <li className="user">
         {this.props.name}
-        <button onClick={handleRemove}>delete</button>
+        <button onClick={this.props.handleRemove}>delete</button>
         <TodoForm
           value={input}
           onChange={handleChange}
           onCreate={handleCreate}
           onKeyPress={handleKeyPress}
         />
-        {todoList}
-      </div>
+        <TodoList
+          todos={this.state.todos}
+          handleRemove={handleRemove}
+        />
+      </li>
     );
   }
 
@@ -41,6 +39,7 @@ class User extends Component {
       input: '', // 인풋 비우고
       // concat 을 사용하여 배열에 추가
       todos: todos.concat({
+        no : this.no++,
         id: this.makeNewID(),
         name: input,
         checked: false
@@ -48,8 +47,11 @@ class User extends Component {
     });
   }
 
-  handleRemove = () => {
-    this.props.handleRemove(this.props.id);
+  handleRemove = (id) => {
+    const { todos } = this.state;
+    this.setState({
+      todos: todos.filter((todo) => todo.id !== id)
+    })
   }
 
   handleKeyPress = (e) => {
