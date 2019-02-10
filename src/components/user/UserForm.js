@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './user.scss';
-import { UserConsumer } from '../../context/User'
+import { UserConsumer } from '../../context/UserContext'
 
 class UserForm extends Component {
   state = {
@@ -29,16 +29,18 @@ class UserForm extends Component {
 
   handleCreate = () => {
     const { input } = this.state;
-    this.props.setValue(input);
-  }
+    const { value } = this.props;
+    const users = value.concat({
+      key: new Date().getTime(),
+      name: input,
+      checked: false
+    })
 
-  // handleCreate = () => {
-  //   const { input } = this.state;
-  //   this.props.handleCreate(input);
-  //   this.setState({
-  //     input: ''
-  //   });
-  // }
+    this.props.setValue(users);
+    this.setState({
+      input : ''
+    })
+  }
 
   handleKeyPress = (e) => {
     if(e.key === 'Enter') {
@@ -59,7 +61,7 @@ const UserFormContainer = () => (
     {
       ({state, actions}) => (
         <UserForm
-          value={state.user}
+          value={state.users}
           setValue={actions.setValue}
         />
       )

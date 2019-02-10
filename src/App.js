@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MainTemplate from './components/main/MainTemplate'
 import LeftMenuTemplate from './components/leftMenu/LeftMenuTemplate'
-import { UserProvider } from './context/User'
+import { UserProvider } from './context/UserContext'
 import './App.scss'
 
 class App extends Component {

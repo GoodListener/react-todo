@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import User from './User'
-import { UserConsumer } from '../../context/User'
+import { UserConsumer } from '../../context/UserContext'
 
 class UserList extends Component {
+  handleRemove = (key, users, actions) => {
+    actions.setValue(users.filter((user) => user.key !== key));
+  }
+
   render() {
     const userList = (
     <UserConsumer>
       {
-        (test) => (
-          test.state.users.map(
+        ({state, actions}) => (
+          state.users.map(
             user => (
               <User
                 key={user.key}
                 name={user.name}
+                handleRemove={() => {this.handleRemove(user.key, state.users, actions)}}
               />)
           )
         )
@@ -20,11 +25,11 @@ class UserList extends Component {
     </UserConsumer>
   );
 
-    return (
-      <div>
-        {userList}
-      </div>
-    )
+  return (
+    <div>
+      {userList}
+    </div>
+  )
   }
 
 }

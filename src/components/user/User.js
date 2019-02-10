@@ -12,8 +12,7 @@ class User extends Component {
 
   render() {
     const {input} = this.state;
-    const { handleRemove } = this;
-    const {handleChange, handleCreate, handleKeyPress} = this;
+    const {handleChange, handleRemove, handleCreate, handleKeyPress} = this;
 
     return (
       <li className="user">
