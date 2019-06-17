@@ -28,5 +28,6 @@
   ],
   "devDependencies": {
     "electron": "^4.0.1"
-  }
+  },
+  "homepage" : "https://goodlistener.github.io/react-todo"
 }

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import UserStorage from '../storage/UserStorage'
 
 const { Provider, Consumer: UserConsumer } = React.createContext();
 
 class UserProvider extends Component {
   state = {
-    users : []
+    users : JSON.parse(new UserStorage().getItem())
   }
 
   actions = {
@@ -12,10 +13,12 @@ class UserProvider extends Component {
       this.setState({
         users: value
       });
+      new UserStorage().saveItem(JSON.stringify(value));
     }
   }
 
   render() {
+    console.log(this.state);
     const { state, actions } = this;
     const value = { state, actions };
     return (
