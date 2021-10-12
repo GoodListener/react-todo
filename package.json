@@ -28,7 +28,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "electron": "^4.0.1",
+    "electron": "^11.5.0",
     "gh-pages": "^2.0.1"
   },
   "homepage": "https://goodlistener.github.io/react-todo"
